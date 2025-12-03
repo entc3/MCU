@@ -1,0 +1,43 @@
+C51 COMPILER V9.54   KEY_______                                                            11/30/2025 16:38:21 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE KEY_______
+OBJECT MODULE PLACED IN .\Objects\Key - ¸±±¾.obj
+COMPILER INVOKED BY: D:\QRT-2\KEIL5\C51\BIN\C51.EXE Key - ¸±±¾.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Lis
+                    -tings\Key - ¸±±¾.lst) TABS(2) OBJECT(.\Objects\Key - ¸±±¾.obj)
+
+line level    source
+
+   1          #include <STC89C5xRC.H>
+   2          #include "Delay.h"
+   3          
+   4          /*
+   5           * @brief è·å–ç‹¬ç«‹æŒ‰é”®é”®ç 
+   6           * @param æ— 
+   7           * @retval æŒ‰é”®æŒ‰ä¸‹æ¾å¼€åï¼ŒèŒƒå›´0-4ï¼›æŒ‰é”®æœªæŒ‰ä¸‹æ—¶ï¼Œè¿”å›0ï¼›
+   8           */
+   9          //¼ò½é ²ÎÊı ·µ»ØÖµ
+  10          
+  11          unsigned char Key()
+  12          {
+  13   1        unsigned char KeyNumber = 0;
+  14   1        if(P31 == 0){Delay(20);while(P31 == 0);Delay(20);KeyNumber = 1;}
+  15   1        if(P30 == 0){Delay(20);while(P30 == 0);Delay(20);KeyNumber = 2;}
+  16   1        if(P32 == 0){Delay(20);while(P32 == 0);Delay(20);KeyNumber = 3;}
+  17   1        if(P33 == 0){Delay(20);while(P33 == 0);Delay(20);KeyNumber = 4;}
+  18   1        return KeyNumber;
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     97    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,70 @@
+C51 COMPILER V9.54   TIMER0                                                                12/02/2025 12:12:32 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIMER0
+OBJECT MODULE PLACED IN .\Objects\Timer0.obj
+COMPILER INVOKED BY: D:\QRT-2\KEIL5\C51\BIN\C51.EXE Timer0.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\Timer0.lst) TABS(2) OBJECT(.\Objects\Timer0.obj)
+
+line level    source
+
+   1          #include <STC89C5xRC.H>
+   2          
+   3          void Timer0_Init()         //括号内的void可写可不写，写代表不需要参数，不写代表可�
+             -��长度参数
+   4          {
+   5   1        //TMOD = 0x01;              //选择为定时器0，工作模式为01；
+   6   1        TMOD = TMOD & 0xF0;          //把TMOD的低四位清零，高四位保持不变；                     
+             -  1010 0011 & 1111 0000 = 1010 0000                   
+   7   1        TMOD = TMOD | 0x01;          //把TMOD的最低位置1，高四位保持不变；可简化为TMOD| = 0x0
+             -1;   1010 0000 | 0000 0001 = 1010 0001
+   8   1        //逻辑或||用于条件判断(布尔逻辑运算)，当有任一条件为真则结果为真,只考虑�
+             -�一个条件是否真假，不考虑后续条件；
+   9   1        //按位或|主要用于对位操作，每一位进行比较，如果对应位为1则该位为1；例5|3(
+             -0101|0011) = 7(0111)；
+  10   1        TF0 = 0;                 //这两行都是对TCON的位进行操作
+  11   1        TR0 = 1;               //使中断标识位置0，启动定时器0；
+  12   1        TH0 = 0x66;    //给定时器赋初值，定时1ms
+  13   1        TL0 = 0xFC;    //; 
+  14   1        ET0 = 1;                 //打开定时器0中断允许
+  15   1        EA = 1;                 //打开总中断
+  16   1      } 
+  17            
+  18          /*      中断模板
+  19          
+  20          void time0_Routine() interrupt 1  
+  21          {                                
+  22            static unsigned int timecounter;   
+  23            timecounter++;                      
+  24            TH0 = 64536 / 256;                   
+  25            TL0 = 64536 % 256;
+  26            if (timecounter >= 1000)
+  27            {
+  28              timecounter = 0;
+  29                    
+  30            }                    
+  31          } 
+  32          
+  33          
+  34          /*
+  35           * @brief 定时器0初始化，1毫秒@11.0592MHZ
+  36           * @param 无
+  37           * @retval 无
+  38           */
+  39          //��� ���� ����ֵ*/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     21    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.54   TIMER0                                                                12/02/2025 12:12:32 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
